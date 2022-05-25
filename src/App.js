@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Header from './components/Header/Header';
+import Template from "./components/Template/Template";
+import Mainbody from './components/Mainbody/Mainbody';
+import "./App.css";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Formheader from './components/Formheader/Formheader';
+import CenteredTabs from './components/Tabs/Tabs';
+import Question_form from './components/Question/Question_form';
+import User_form from './components/Userform/user_form';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Routes>
+          <Route path="/form/:id" element={<><Formheader/><CenteredTabs/></>}/>
+          <Route path="/response" element={<><User_form/></>}/>
+          <Route path="/" element={<><Header/><Template/><Mainbody/></>}/>
+        </Routes>
+      </Router>
     </div>
   );
 }
